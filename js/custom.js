@@ -1,4 +1,3 @@
-// 可加在 themes/butterfly/source/js/custom.js
 document.body.addEventListener('click', function (e) {
   const words = ["💥", "🚀", "✨", "🔥", "❤", "Cool!", "Hi~"];
   const word = words[Math.floor(Math.random() * words.length)];
@@ -14,10 +13,16 @@ document.body.addEventListener('click', function (e) {
     font-size: 16px;
     pointer-events: none;
     user-select: none;
-    animation: moveUp 800ms ease-out forwards;
+    animation: moveUp 1s ease-out forwards;
   `;
   document.body.appendChild(span);
-  span.addEventListener('animationend', () => span.remove());
+
+  // 设置2秒后自动删除
+  setTimeout(() => {
+    if (span.parentNode) {
+      span.remove();
+    }
+  }, 2000);
 });
 
 // 加入 CSS 动画（custom.css）
